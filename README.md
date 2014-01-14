@@ -9,6 +9,7 @@ Ruby 1.9.3+ or 2.0+
 ## Usage
 
 1. Clone this repo.
-2. Run `bundle install`
-3. Run Sinatra. `./bin/shotgun`
-4. View at `http://localhost:9393`
+1. Run `bundle install`
+1. Set your GitHub access token `export GITHUB_ACCESS_TOKEN=secret`
+1. Run Sinatra. `./bin/shotgun`
+1. View at `http://localhost:9393`
