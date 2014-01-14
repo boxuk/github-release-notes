@@ -2,18 +2,15 @@ require 'sinatra'
 require 'octokit'
 require 'rdiscount'
 
-ACCESS_TOKEN = 'YOUR_ACCESS_TOKEN'
+ACCESS_TOKEN = ENV['GITHUB_ACCESS_TOKEN']
 
 get '/' do
-  erb :layout do
-    erb :index
-  end
+  erb :index
 end
 
 get '/:owner/:repository' do
-  client = Octokit::Client.new access_token: ACCESS_TOKEN
-  releases = client.repo("#{ params[:owner] }/#{ params[:repository] }").rels[:releases].get.data
-  erb :layout do
-    erb :repository, locals: { releases: releases }
-  end
+  owner, repository = params[:owner], params[:repository]
+  client    = Octokit::Client.new(access_token: ACCESS_TOKEN)
+  @releases = client.repo("#{ owner }/#{ repository }").rels[:releases].get.data
+  erb :repository
 end
