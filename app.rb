@@ -5,11 +5,15 @@ require 'rdiscount'
 ACCESS_TOKEN = 'YOUR_ACCESS_TOKEN'
 
 get '/' do
-  erb :index
+  erb :layout do
+    erb :index
+  end
 end
 
-get '/:repository' do
+get '/:owner/:repository' do
   client = Octokit::Client.new access_token: ACCESS_TOKEN
-  releases = client.repo("boxuk/#{ params[:repository] }").rels[:releases].get.data
-  erb :repository, locals: { releases: releases }
+  releases = client.repo("#{ params[:owner] }/#{ params[:repository] }").rels[:releases].get.data
+  erb :layout do
+    erb :repository, locals: { releases: releases }
+  end
 end

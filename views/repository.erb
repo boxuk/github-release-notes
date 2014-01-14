@@ -1,4 +1,9 @@
 <% releases.each do |release| %>
-  <h2><%= release.tag_name %></h2>
-  <p><%= RDiscount.new(release.body).to_html %></p>
+  <div class="release">
+    <h1><%= release.tag_name %></h1>
+    <small>Released on: <%= release.published_at.strftime('%e %b %Y %H:%m:%S%p') %></small>
+    <h2>Features</h2>
+    <%= RDiscount.new(release.body).to_html %>
+    <hr />
+  </div>
 <% end %>
