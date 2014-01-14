@@ -1,0 +1,4 @@
+<% releases.each do |release| %>
+  <h2><%= release.tag_name %></h2>
+  <p><%= RDiscount.new(release.body).to_html %></p>
+<% end %>
