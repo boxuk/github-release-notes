@@ -1,5 +1,7 @@
 # GitHub Release Notes
 
+# This repository is unmaintained
+
 Little sinatra app to display the release notes for a given GitHub repo.
 
 ## Requirements
